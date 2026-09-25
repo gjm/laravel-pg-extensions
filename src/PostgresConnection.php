@@ -92,7 +92,7 @@ class PostgresConnection extends BasePostgresConnection
 
     public function prepareBindings(array $bindings)
     {
-        if ($this->getPdo()->getAttribute(PDO::ATTR_EMULATE_PREPARES)) {
+        if ($this->pdo instanceof PDO && $this->pdo->getAttribute(PDO::ATTR_EMULATE_PREPARES)) {
             $grammar = $this->getQueryGrammar();
 
             foreach ($bindings as $key => $value) {
